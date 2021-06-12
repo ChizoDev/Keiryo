@@ -1,0 +1,19 @@
+{
+    // Deno settings
+    "deno.enable": true,
+    "deno.lint": true,
+    "deno.unstable": true,
+
+    // Default settings
+    "editor.defaultFormatter": null,
+    
+    // TypeScript settings
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // JavaScript settings
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}

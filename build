@@ -10,10 +10,19 @@ if ! command -v deno &> /dev/null ; then
     exit
 fi
 
-# Check for `./build` directory
-if test -d ./build ; then
-    rm -rf ./build/*
+# Check for `./target` directory
+if test -d ./target ; then
+    rm -r -f ./target/*
+else
+    mkdir target
 fi
 
 # Build the project
-deno compile -q -A ./src/index.ts
+deno compile -q -A -o target/keiryo src/index.ts
+
+# Check the build status
+if test -f ./target/keiryo ; then
+    printf "(\e[32mInfo\e[0m): Build complete\n"
+    printf "(\e[32mInfo\e[0m): Run './target/keiryo --help' to verify\n"
+    exit
+fi
