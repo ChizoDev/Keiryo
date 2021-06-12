@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Check for `deno` in PATH
+if ! command -v deno &> /dev/null ; then
+    printf "(\e[31mError\e[0m): Deno is not found in your PATH enviroment\n"
+    printf "(\e[31mError\e[0m): Make sure you've installed it and set in properly\n"
+    printf "(\e[31mError\e[0m): Try again later\n"
+
+    printf "(\e[31mError\e[0m): Aborting request..."
+    exit
+fi
+
+# Check for `./build` directory
+if test -d ./build ; then
+    rm -rf ./build/*
+fi
+
+# Build the project
+deno compile -q -A ./src/index.ts
