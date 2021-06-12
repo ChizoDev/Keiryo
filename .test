@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Check for `deno` in PATH
+if ! command -v deno &> /dev/null ; then
+    printf "(\e[31mError\e[0m): Deno is not found in your PATH enviroment\n"
+    printf "(\e[31mError\e[0m): Make sure you've installed it and set in properly\n"
+    printf "(\e[31mError\e[0m): Try again later\n"
+
+    printf "(\e[31mError\e[0m): Aborting request..."
+    exit
+fi
+
+# Check for `./.test` directory
+if ! test -d ./test ; then
+    printf "(\e[31mError\e[0m): Test files not found\n"
+    printf "(\e[31mError\e[0m): Make sure you've created a directory called 'test' and have some files in it\n"
+    printf "(\e[31mError\e[0m): The files must ends with '.test.js'\n"
+    printf "(\e[31mError\e[0m): Once you've created it, you run run this file again\n"
+
+    printf "(\e[31mError\e[0m): Aborting request..."
+    exit
+fi
+
+# Run tests
+deno test -q -A ./test
