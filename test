@@ -22,4 +22,4 @@ if ! test -d ./test ; then
 fi
 
 # Run tests
-deno test -q -A ./test
+deno test -q -A .test

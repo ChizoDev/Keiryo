@@ -19,9 +19,21 @@ export class Tokenizer {
             this.token = this.input[this.index];
 
             switch (this.token) {
+                case '#': {
+                    while (this.index < this.input.length && !/\n/.test(this.input[this.index])) {
+                        this.index += 1;
+                    }
+
+                    break;
+                }
+
                 default: {
                     if (operator.has(this.token)) {
-                        this.tokens.push({ type: operator.get(this.token), value: this.token });
+                        this.tokens.push({ type: operator.get(this.token) as string, value: this.token });
+                        this.index += 1;
+                    }
+
+                    else if (/\n/.test(this.token) || /\s/.test(this.token)) {
                         this.index += 1;
                     }
                 }
