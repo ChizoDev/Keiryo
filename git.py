@@ -21,22 +21,30 @@ def main():
     # We add the changes and commit them
     sys.stdout.write('(\033[1;32mInfo\033[1;0m): Adding changes')
     time.sleep(0.8)
+    sys.stdout.flush()
     sys.stdout.write('.')
+    sys.stdout.flush()
     time.sleep(0.8)
     sys.stdout.write('.')
+    sys.stdout.flush()
     time.sleep(0.8)
     sys.stdout.write('.\n')
+    sys.stdout.flush()
     os.system('git add .')
     os.system('git commit -q -m "{}"'.format(commit_msg))
 
     # And push the remote
     sys.stdout.write('(\033[1;32mInfo\033[1;0m): Pushing to remote')
     time.sleep(0.8)
+    sys.stdout.flush()
     sys.stdout.write('.')
+    sys.stdout.flush()
     time.sleep(0.8)
     sys.stdout.write('.')
+    sys.stdout.flush()
     time.sleep(0.8)
     sys.stdout.write('.\n')
+    sys.stdout.flush()
     os.system('git push -q')
 
     # Once everything is done, we exit
