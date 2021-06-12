@@ -1,5 +1,5 @@
 # Import all the required modules
-import os, sys
+import os, sys, time
 
 # Clear the screen
 sys.stdout.write('\x1bc')
@@ -16,19 +16,31 @@ def main():
     # And exit
     if commit_msg.lower() == 'exit' or commit_msg.lower() == 'cancel':
         sys.stdout.write('(\033[1;32mInfo\033[1;0m): Aborting request...')
-        sys.exit()
+        sys.exit(0)
 
     # We add the changes and commit them
-    sys.stdout.write('(\033[1;32mInfo\033[1;0m): Adding changes...\n')
+    sys.stdout.write('(\033[1;32mInfo\033[1;0m): Adding changes')
+    time.sleep(0.4)
+    sys.stdout.write('.')
+    time.sleep(0.4)
+    sys.stdout.write('.')
+    time.sleep(0.4)
+    sys.stdout.write('.\n')
     os.system('git add .')
     os.system('git commit -q -m "{}"'.format(commit_msg))
 
     # And push the remote
-    sys.stdout.write('(\033[1;32mInfo\033[1;0m): Pushing to remote...\n')
+    sys.stdout.write('(\033[1;32mInfo\033[1;0m): Pushing to remote')
+    time.sleep(0.4)
+    sys.stdout.write('.')
+    time.sleep(0.4)
+    sys.stdout.write('.')
+    time.sleep(0.4)
+    sys.stdout.write('.\n')
     os.system('git push -q')
 
     # Once everything is done, we exit
-    sys.exit()
+    sys.exit(0)
 
 if __name__ == '__main__':
     try:
