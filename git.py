@@ -18,9 +18,13 @@ def main():
         sys.stdout.write('(\033[1;32mInfo\033[1;0m): Aborting request...')
         sys.exit()
 
-    # We add changes, commit them and push to remote
+    # We add the changes and commit them
+    sys.stdout.write('(\033[1;32mInfo\033[1;0m): Adding changes...\n')
     os.system('git add .')
     os.system('git commit -q -m "{}"'.format(commit_msg))
+
+    # And push the remote
+    sys.stdout.write('(\033[1;32mInfo\033[1;0m): Pushing to remote...\n')
     os.system('git push -q')
 
     # Once everything is done, we exit
